@@ -1,0 +1,33 @@
+Q1
+1.1 feasibility
+ignored the constraint [2], set no objectives
+Results:
+    Total demand is: 44
+    Total supply is: 44.0
+    Total pumping power is: 3484.9075701436304
+        The pumping power is calculated by adding all power of each supply node.
+        The power that each supply node consumes is calculated by constraint [2]
+
+
+1.2.1
+The simple bounds are only used in the relaxation of constraint [2], which is a non-linear constraint.
+so that [2] can be relaxed into constraints [3] and [4].
+Relaxation Objective 3127.3013499999997
+Exact Objective 3415.9130187585342
+
+1.2.2
+Ignore the constraints [3] and [4]
+change the objective to the min value of s, the result is:
+min: 3.5210716, 9.3862895, 8.167482, 8.1455599, 3.5499084, they can be the new lower bounds of the variable
+
+then maximize the objective, the result is:
+max: 9.0, 11.0, 15.945724, 10.0, 6.9791667, they can be the new upper bounds of the variable
+solve the problem, and get:
+Relaxation Objective 3295.68598
+Exact Objective 3415.9446709291433
+
+Even the new exact objective is not better than previous one
+the new relaxation objective becomes closer to the exact objective
+it indicates that the tighter bounds of variable s can help to generate better relaxation of non-linear constraint
+so the quality of tighter bounds is better than the simple bounds
+
