@@ -10,3 +10,12 @@
 
 we have a polygon in space. if there were some intersections, then the solution would be on this
 > note that we don't have inequality here, so that the inner space would not be feasible
+
+
+
+## Handle the tableau
+![example](./src/eg.jpg)
+1. Find the most negative coefficient
+> P is positive, so find the variable with the most negative
+>> it tells that the variable has the greatest impacts on the P, the objective
+![example](./src/eg2.jpg)
