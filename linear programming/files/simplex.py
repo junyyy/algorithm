@@ -95,7 +95,7 @@ def simplex_inner(lp, basis, tol):
             # which means that in all rows, all entries are less than or equal to 0
             return {"status": Status.UNBOUNDED, "pivots": pivots}
         row = None
-        for i in range(1, matrix_m):
+        for i in range(1, matrix_m - 1):
             if matrix[i, col] > tol:
                 if not row:
                     row = i
@@ -115,10 +115,7 @@ def simplex_inner(lp, basis, tol):
                 x[j] = matrix[i, matrix_n - 1]
 
     lp.a = matrix[1:,0: n-m]
-    print("jjjjjjj")
-    print(lp.a)
     lp.b = matrix[1:, matrix_n-1]
-    print(lp.b)
     return {"status": Status.OPTIMAL, "pivots": pivots, "x": x, "basis": basis, "objective": opt_val}
 
 
@@ -172,10 +169,6 @@ def simplex(lp, tol=1e-9):
     # if the problem is feasible, then run the simplex again
     # change c back to original one
     lp.c = c
-    print("SHapesssssssssssss")
-    print(lp.a.shape)
-    print(lp.b.shape)
-    print(lp.c.shape)
     new_res = simplex_inner(lp, basis, tol)
     opt_pivots = new_res["pivots"]
     if new_res["status"] == Status.UNBOUNDED:
